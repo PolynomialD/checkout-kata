@@ -1,0 +1,47 @@
+h1, h2 {
+	margin: 1em 0 0.5em 0;
+	color: #343434;
+	font-weight: normal;
+	font-family: 'Ultra', sans-serif;   
+	font-size: 36px;
+	line-height: 42px;
+	text-transform: uppercase;
+	text-shadow: 0 2px white, 0 3px #777;
+	text-align: center;
+}
+
+.my-button {
+	padding: 10px;
+	margin: 15px;
+}
+
+.mini-button {width: 22%;}
+
+p , #total-hidden {
+	font-size: 35px;
+	margin: 20px;
+	margin-left: 50px;
+}
+
+.SKU-buttons {
+	padding: 20px;
+	margin: 20px;
+}
+
+.receipt-list {
+	font-size: 1.5em;
+	padding: 10px;
+	margin: 10px;
+}
+
+ .main-container {margin-right: 40px;}
+
+ #h2 {margin-top: 25px;}
+
+ #error-hidden {
+	font-size: 1.5em;
+	margin: 20px;
+	text-align: center;
+	color: red;
+
+}

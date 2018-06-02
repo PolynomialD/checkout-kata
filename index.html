@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Checkout Kata</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  <script src="main.js"></script>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+    crossorigin="anonymous">
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+</head>
+<body >
+  <div class="col-md-3 col-md-offset-3 main-container">
+    <div >
+      <h1>Checkout</h1>
+      <div class="row SKU-buttons">
+        <button type="button" onclick="resetUserInput(); addToList('A99')" class="btn btn-secondary btn-lg mini-button">A99</button>
+        <button type="button" onclick="resetUserInput(); addToList('B15')" class="btn btn-secondary btn-lg mini-button">B15</button>
+        <button type="button" onclick="resetUserInput(); addToList('C40')" class="btn btn-secondary btn-lg mini-button">C40</button>
+        <button type="button" onclick="resetUserInput(); addToList('T34')" class="btn btn-secondary btn-lg mini-button">T34</button>
+      </div>
+      <label for="checkoutUserInput">Enter SKU</label>
+      <input type="text" class="form-control input-lg" id="checkoutUserInput" maxlength="3">
+    </div>
+    
+    <div class="btn-grp">
+      <button type="button" onclick=" resetError(); addToList()" class="btn btn-primary btn-lg my-button">Enter</button>
+      <button type="button" onclick="showTotal()" class="btn btn-primary btn-lg my-button">Total</button>
+      <button type="button" onclick="reset()" class="btn btn-primary btn-lg my-button">Reset</button>
+    </div>
+    <div>
+      <p id="error-hidden"></p>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <h2 id="h2">receipt</h2>
+      <p id="receipt-hidden" class="receipt-list"></p>
+  <div class="row">
+    <p id="total-hidden"></p>
+  </div>
+</div>
+
+</body>
+</html>
