@@ -7,7 +7,9 @@ var receipt = ''
 var totalElement =  document.getElementById("total-hidden")
 var receiptElement = document.getElementById("receipt-hidden")
 var errorElement = document.getElementById("error-hidden")
+console.log('hello', errorElement)
 var userInputElement = document.getElementById("checkoutUserInput")
+console.log('hello', userInputElement)
 
 function addToList(SKUButton) {
   var SKU = userInputElement.value
@@ -18,7 +20,7 @@ function addToList(SKUButton) {
   else {errorElement.innerHTML = 'Not a valid SKU'}
 }
 
-function Total() {
+function showTotal() {
   total = (A99 * 50) + (B15 * 30) + (C40 * 60) + (T34 * 99) -
   ((Math.floor(A99/3)) * 20) - ((Math.floor(B15/2)) * 15)
   totalElement.innerHTML = total
