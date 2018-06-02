@@ -22,17 +22,17 @@
     <div >
       <h1>Checkout</h1>
       <div class="row SKU-buttons">
-        <button type="button" onclick="resetUserInput(); addToList('A99')" class="btn btn-secondary btn-lg mini-button">A99</button>
-        <button type="button" onclick="resetUserInput(); addToList('B15')" class="btn btn-secondary btn-lg mini-button">B15</button>
-        <button type="button" onclick="resetUserInput(); addToList('C40')" class="btn btn-secondary btn-lg mini-button">C40</button>
-        <button type="button" onclick="resetUserInput(); addToList('T34')" class="btn btn-secondary btn-lg mini-button">T34</button>
+        <button type="button" onclick="addToList('A99')" class="btn btn-secondary btn-lg mini-button">A99</button>
+        <button type="button" onclick="addToList('B15')" class="btn btn-secondary btn-lg mini-button">B15</button>
+        <button type="button" onclick="addToList('C40')" class="btn btn-secondary btn-lg mini-button">C40</button>
+        <button type="button" onclick="addToList('T34')" class="btn btn-secondary btn-lg mini-button">T34</button>
       </div>
       <label for="checkoutUserInput">Enter SKU</label>
       <input type="text" class="form-control input-lg" id="checkoutUserInput" maxlength="3">
     </div>
     
     <div class="btn-grp">
-      <button type="button" onclick=" resetError(); addToList()" class="btn btn-primary btn-lg my-button">Enter</button>
+      <button type="button" onclick=" addToList()" class="btn btn-primary btn-lg my-button">Enter</button>
       <button type="button" onclick="showTotal()" class="btn btn-primary btn-lg my-button">Total</button>
       <button type="button" onclick="reset()" class="btn btn-primary btn-lg my-button">Reset</button>
     </div>
@@ -43,6 +43,7 @@
   <div class="col-md-3">
     <h2 id="h2">receipt</h2>
       <p id="receipt-hidden" class="receipt-list"></p>
+      <p id = "discount"></p>
   <div class="row">
     <p id="total-hidden"></p>
   </div>

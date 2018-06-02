@@ -1,59 +1,108 @@
-var A99 = 0
-var B15 = 0
-var C40 = 0
-var T34 = 0
+
+var products = {
+  A99: {
+    price: 50,
+    quantity: 0,
+    offerTrigger: 3,
+    discount: 20
+  },
+  B15: {
+    price: 30,
+    quantity: 0,
+    offerTrigger: 2,
+    discount: 15
+  },
+  C40: {
+    price: 60,
+    quantity: 0,
+    offerTrigger: -1,
+    discount: 0
+  },
+  T34: {
+    price: 99,
+    quantity: 0,
+    offerTrigger: -1,
+    discount: 0
+  }
+}
+
+
 var receipt = ''
 
 var totalElement =  document.getElementById("total-hidden")
 var receiptElement = document.getElementById("receipt-hidden")
 var errorElement = document.getElementById("error-hidden")
-console.log('hello', errorElement)
 var userInputElement = document.getElementById("checkoutUserInput")
-console.log('hello', userInputElement)
+ 
+function addToList(SKU = null) {
+  SKU = (SKU === null) ? userInputElement.value : SKU
 
-function addToList(SKUButton) {
-  var SKU = userInputElement.value
-       if((SKU || SKUButton) === 'A99') {A99 += 1, addToReceipt(50)}
-  else if((SKU || SKUButton) === 'B15') {B15 += 1, addToReceipt(30)}
-  else if((SKU || SKUButton) === 'C40') {C40 += 1, addToReceipt(60)}
-  else if((SKU || SKUButton) === 'T34') {T34 += 1, addToReceipt(99)}
-  else {errorElement.innerHTML = 'Not a valid SKU'}
+  errorElement.innerHTML = ''
+
+  if(products[SKU] !== undefined) {
+    products[SKU].quantity++
+    addToReceipt(SKU)
+  } else {
+    errorElement.innerHTML = 'Not a valid SKU'
+  }
+
+  userInputElement.value = ''
 }
 
 function showTotal() {
-  total = (A99 * 50) + (B15 * 30) + (C40 * 60) + (T34 * 99) -
-  ((Math.floor(A99/3)) * 20) - ((Math.floor(B15/2)) * 15)
+  let total = 0
+  let productKeys = getProductKeys()
+
+  for(var i = 0; i < productKeys.length; i++) {
+    let key = productKeys[i]
+    let product = products[key]
+    let discount = 0
+
+    if (product.offerTrigger > 0) {
+      discount = Math.floor(product.quantity/product.offerTrigger * (product.discount))
+    }
+
+    total += (product.quantity * product.price) - discount
+    console.log(product)
+  }
+
   totalElement.innerHTML = total
 }
 
-function reset() {
-  A99 = 0
-  B15 = 0
-  C40 = 0
-  T34 = 0
-  resetUserInput()
-  totalElement.innerHTML = ''
-  receiptElement.innerHTML = ''
-  receipt = ''
-}
+function addToReceipt(SKU) {
+  var product = products[SKU]
 
-function addToReceipt(amount) {
-  receipt += ' +' + amount
-  if(amount === 50 && Number.isInteger(A99/3)) {
-    receipt += ' -20'
-  }
-  else if (amount === 30 && Number.isInteger(B15/2)) {
-    receipt += ' -15'
-  }
-  else {}
+  receipt += `${SKU}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;£${product.price}<br/>`
+  
+ // if (product.offerTrigger > 1) {
+ //   receipt += Math.floor(product.quantity/product.offerTrigger) * product.discount 
+ // }
   receiptElement.innerHTML = receipt
 }
 
-function resetUserInput() {
-  userInputElement.value = ''
-  errorElement.innerHTML = ''
+function resetProductQuantities() {
+  let productKeys = getProductKeys()
+
+  for(var i = 0; i < productKeys.length; i++) {
+    let product = products[productKeys[i]]
+
+    product.quantity = 0
+  }
 }
 
-function resetError() {
+function getProductKeys() {
+  let productKeys = []
+  for (key in products) {
+    productKeys.push(key)
+  }
+  return productKeys
+}
+
+
+function reset() {
+  resetProductQuantities()
+  totalElement.innerHTML = ''
+  receiptElement.innerHTML = ''
   errorElement.innerHTML = ''
+  receipt = ''
 }
