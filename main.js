@@ -59,7 +59,7 @@ function showTotal() {
     let discount = 0
 
     if (product.offerTrigger > 0) {
-      discount = Math.floor(product.quantity/product.offerTrigger * (product.discount))
+      discount = Math.floor(product.quantity/product.offerTrigger) * (product.discount)
     }
 
     total += (product.quantity * product.price) - discount
@@ -74,9 +74,9 @@ function addToReceipt(SKU) {
 
   receipt += `${SKU}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;£${product.price}<br/>`
   
- // if (product.offerTrigger > 1) {
- //   receipt += Math.floor(product.quantity/product.offerTrigger) * product.discount 
- // }
+  if (Number.isInteger(product.quantity/product.offerTrigger) && product.quantity/product.offerTrigger > 0) {
+    receipt += `-£${Math.floor(product.quantity/product.offerTrigger) * (product.discount)}<br/>`
+  }
   receiptElement.innerHTML = receipt
 }
 
