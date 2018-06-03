@@ -47,6 +47,7 @@ function addToList(SKU = null) {
   }
 
   userInputElement.value = ''
+  totalElement.innerHTML = ''
 }
 
 function showTotal() {
@@ -66,16 +67,16 @@ function showTotal() {
     console.log(product)
   }
 
-  totalElement.innerHTML = total
+  totalElement.innerHTML = `Total:&nbsp;£` + total
 }
 
 function addToReceipt(SKU) {
   var product = products[SKU]
 
-  receipt += `${SKU}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;£${product.price}<br/>`
+  receipt += `${SKU}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;£${product.price}<br/>`
   
   if (Number.isInteger(product.quantity/product.offerTrigger) && product.quantity/product.offerTrigger > 0) {
-    receipt += `-£${Math.floor(product.quantity/product.offerTrigger) * (product.discount)}<br/>`
+    receipt += `Discount:&nbsp;- £${product.discount}<br/>`
   }
   receiptElement.innerHTML = receipt
 }
